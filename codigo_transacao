@@ -1,0 +1,24 @@
+from faker import Faker
+import random
+from datetime import datetime, timedelta
+
+fake = Faker()
+
+def generate_transactions(num_transactions, clients):
+    transactions = []
+    for _ in range(num_transactions):
+        transaction = {
+            'transaction_id': fake.uuid4(),
+            'client_id': random.choice(clients)['id'],
+            'transaction_date': fake.date_between(start_date='-1y', end_date='today'),
+            'transaction_value': round(random.uniform(10, 500), 2),
+        }
+        transactions.append(transaction)
+    return transactions
+
+
+  
+  num_transactions = 500
+  
+  transactions_data = generate_transactions(num_transactions, clients_data)
+
