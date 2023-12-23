@@ -1,0 +1,16 @@
+from faker import Faker
+import random
+from datetime import datetime, timedelta
+
+fake = Faker()
+
+def generate_clients(num_clients):
+    clients = []
+    for _ in range(num_clients):
+        client = {
+            'id': fake.uuid4(),
+            'name': fake.name(),
+            'registration_date': fake.date_this_decade(),
+        }
+        clients.append(client)
+    return clients
