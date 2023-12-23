@@ -1,0 +1,23 @@
+from faker import Faker
+import random
+from datetime import datetime, timedelta
+
+fake = Faker()
+
+  def generate_interactions(num_interactions, clients):
+    interactions = []
+    for _ in range(num_interactions):
+        interaction = {
+            'interaction_id': fake.uuid4(),
+            'client_id': random.choice(clients)['id'],
+            'interaction_date': fake.date_between(start_date='-1y', end_date='today'),
+            # Adicione tipos de interação conforme necessário
+        }
+        interactions.append(interaction)
+    return interactions
+
+
+  num_interactions = 300
+
+
+  interactions_data = generate_interactions(num_interactions, clients_data)
