@@ -1,0 +1,23 @@
+from faker import Faker
+import random
+from datetime import datetime, timedelta
+
+fake = Faker()
+
+def generate_feedback(num_feedback, clients):
+    feedbacks = []
+    for _ in range(num_feedback):
+        feedback = {
+            'feedback_id': fake.uuid4(),
+            'client_id': random.choice(clients)['id'],
+            'feedback_date': fake.date_between(start_date='-1y', end_date='today'),
+            'rating': random.randint(1, 5),
+            # Adicione outros campos de feedback conforme necessário
+        }
+        feedbacks.append(feedback)
+    return feedbacks
+
+num_feedback = 200
+
+
+feedback_data = generate_feedback(num_feedback, clients_data)
